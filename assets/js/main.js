@@ -15,15 +15,15 @@ window.licker = window.licker || {};
           ret += cmp[0] * Math.sin(i * t + cmp[1]);
         }
         return ret;
-      }
-    }
+      };
+    };
     this.funcX = this.func(0);
     this.funcY = this.func(1);
 
     this.vertexArr = [];
     var t;
     for(t=0; t<2*Math.PI; t+=Math.PI/128) {
-      this.vertexArr.push([this.funcX(t), this.funcY(t)])
+      this.vertexArr.push([this.funcX(t), this.funcY(t)]);
     }
   }
 
@@ -31,7 +31,7 @@ window.licker = window.licker || {};
     var curve = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     curve.setAttribute('points', this.vertexArr);
     $canvas.append(curve);
-  }
+  };
 
   /*
    *  配列の値の総和
@@ -41,7 +41,7 @@ window.licker = window.licker || {};
     var len = arr.length;
     var ret = 0;
     for(i=0; i<len; i++) {
-      ret += arr[i]
+      ret += arr[i];
     }
     return ret;
   }
