@@ -13,20 +13,10 @@ window.licker = window.licker || {};
     $(function() {
       var $canvas = $('.svg-canvas .svg-canvas__main');
       ns.$canvas = $canvas; // TODO: do not use global variable
-
       var $audio = $('.audio--bad-apple');
+
       audioPlayer = new ns.AudioPlayer($audio);
-
-      audioPlayer.$elm.on('seeking', function() {
-        console.log('seeking');
-      });
-
-      audioPlayer.$elm.on('seeked', function() {
-        console.log('seeked');
-      });
-
       animationPlayer = new ns.AnimationPlayer();
-
       moviePlayer = new ns.MoviePlayer(animationPlayer, audioPlayer);
 
       moviePlayer.play();

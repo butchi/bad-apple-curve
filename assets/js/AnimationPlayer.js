@@ -4,8 +4,7 @@ window.licker = window.licker || {};
   }
 
   AnimationPlayer.prototype.play = function() {
-    // this.drawNextFrame();
-  }
+  };
 
   AnimationPlayer.prototype.drawFrame = function(frame) {
     var curveArr = ns.movieData[frame];

@@ -3,17 +3,22 @@ window.licker = window.licker || {};
   function MoviePlayer(animationPlayer, audioPlayer) {
     this.animationPlayer = animationPlayer;
     this.audioPlayer = audioPlayer;
+
+    this.frameRate = 30;
   }
 
   MoviePlayer.prototype.play = function() {
-    // this.animationPlayer.play();
     this.audioPlayer.play();
 
     var _self = this;
-    setInterval(function() {
-      var frame = ~~(_self.audioPlayer.audioElm.currentTime * 30);
+    requestAnimationFrame(loop);
+
+    function loop() {
+      var frame = ~~(_self.audioPlayer.audioElm.currentTime * _self.frameRate);
       _self.animationPlayer.drawFrame(frame);
-    }, 100);
+
+      requestAnimationFrame(loop);
+    }
   };
 
   ns.MoviePlayer = MoviePlayer;
