@@ -1,8 +1,8 @@
 window.licker = window.licker || {};
 (function(ns) {
-  function AudioPlayer(src) {
-    var audioElm = new Audio(src);
-    this.audioElm = audioElm;
+  function AudioPlayer($elm) {
+    this.audioElm = $elm.get(0);
+    this.$elm = $elm;
   }
 
   AudioPlayer.prototype.play = function() {
