@@ -1,0 +1,9 @@
+body {
+  background-color: #000;
+}
+
+.svg-canvas .svg-canvas__main {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1px;
+}
