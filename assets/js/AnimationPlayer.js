@@ -4,7 +4,7 @@ window.licker = window.licker || {};
   }
 
   AnimationPlayer.prototype.play = function() {
-    this.drawNextFrame();
+    // this.drawNextFrame();
   }
 
   AnimationPlayer.prototype.drawFrame = function(frame) {
@@ -17,16 +17,16 @@ window.licker = window.licker || {};
     }
   };
 
-  AnimationPlayer.prototype.drawNextFrame = function() {
-    this.drawFrame(ns.currentFrame);
-    if(ns.currentFrame < ns.movieData.length - 1) {
-      ns.currentFrame++;
-      var _self = this;
-      window.setTimeout(function() {
-        _self.drawNextFrame();
-      }, 1000/30);
-    }
-  };
+  // AnimationPlayer.prototype.drawNextFrame = function() {
+  //   this.drawFrame(ns.currentFrame);
+  //   if(ns.currentFrame < ns.movieData.length - 1) {
+  //     ns.currentFrame++;
+  //     var _self = this;
+  //     window.setTimeout(function() {
+  //       _self.drawNextFrame();
+  //     }, 1000/30);
+  //   }
+  // };
 
   ns.AnimationPlayer = AnimationPlayer;
 }(window.licker));
