@@ -1,5 +1,7 @@
 body {
   background-color: #000;
+
+  color: white;
 }
 
 .svg-canvas .svg-canvas__main {

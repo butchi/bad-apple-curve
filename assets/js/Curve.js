@@ -1,6 +1,6 @@
 window.licker = window.licker || {};
 (function(ns) {
-  function Curve(components) {
+  function Curve(components, maxFreq) {
     // components: 級数展開の係数の配列
     this.func = function(axis) {
       // axis:  x: 0, y: 1
@@ -8,7 +8,8 @@ window.licker = window.licker || {};
         var ret = components[axis][0]; // 定数（周波数0）
         var i;
         var len = components[axis].length; // 級数
-        for(i = 1; i < len; i++) {
+        var freq = Math.min(maxFreq || len, len); // 何次まで拾うか
+        for(i = 1; i < freq; i++) {
           var cmp = components[axis][i];
           // cmp[0]: 係数, cmp[1]: 位相
           ret += cmp[0] * Math.sin(i * t + cmp[1]);
