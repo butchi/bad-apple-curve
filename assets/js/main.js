@@ -64,10 +64,14 @@ window.licker = window.licker || {};
   }
 
   function drawNextFrame() {
-        drawFrame(ns.currentFrame);
-        if(ns.currentFrame < ns.movieData.length - 1) {
-          ns.currentFrame++;
-          window.setTimeout(drawNextFrame, 1000/30);
-        }
-      }
+    drawFrame(ns.currentFrame);
+    if(ns.currentFrame < ns.movieData.length - 1) {
+      ns.currentFrame++;
+      window.setTimeout(drawNextFrame, 1000/30);
+    }
+  }
+
+  var audioPlayer = new ns.AudioPlayer("assets/audio/sm8628149.mp3");
+  audioPlayer.play();
+
 }(window.licker));
