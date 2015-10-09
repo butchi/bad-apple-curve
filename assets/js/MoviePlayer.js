@@ -14,7 +14,7 @@ window.licker = window.licker || {};
     requestAnimationFrame(loop);
 
     function loop() {
-      var frame = ~~(_self.audioPlayer.audioElm.currentTime * _self.frameRate);
+      var frame = Math.floor(_self.audioPlayer.audioElm.currentTime * _self.frameRate);
       _self.animationPlayer.drawFrame(frame);
 
       requestAnimationFrame(loop);
