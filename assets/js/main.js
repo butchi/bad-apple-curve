@@ -12,7 +12,7 @@ window.licker = window.licker || {};
 
     $(function() {
       var $maxFreqController = $('.controller-max-freq');
-      $maxFreqController.on('change', function() {
+      $maxFreqController.on('updatevalue', function(evt) {
         var val = $(this).attr('data-val');
         animationPlayer.maxFreq = val;
         $maxFreqSlidebar.val(val);
@@ -23,12 +23,11 @@ window.licker = window.licker || {};
       var $maxFreqNumber = $('.controller-max-freq__number input');
       $maxFreqSlidebar.on('change', function() {
         $maxFreqController.attr('data-val', $(this).val());
-        $maxFreqController.trigger('change');
+        $(this).trigger('updatevalue');
       });
       $maxFreqNumber.on('change', function() {
-        console.log('hoge');
         $maxFreqController.attr('data-val', $(this).val());
-        $maxFreqController.trigger('change');
+        $(this).trigger('updatevalue');
       });
 
       var $canvas = $('.svg-canvas .svg-canvas__main');
