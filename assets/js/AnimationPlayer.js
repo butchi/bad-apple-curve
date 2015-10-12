@@ -11,7 +11,7 @@ window.licker = window.licker || {};
     var c;
     if(curveArr) {
       ns.$canvas.children().remove();
-      for(c=0; c<curveArr.length; c++) {
+      for(c = 0; c < curveArr.length; c++) {
         var curve = new ns.Curve(curveArr[c], this.maxFreq);
         curve.draw();
       }
