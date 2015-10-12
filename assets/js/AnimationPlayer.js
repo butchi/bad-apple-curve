@@ -1,6 +1,7 @@
 window.licker = window.licker || {};
 (function(ns) {
   function AnimationPlayer() {
+    this.currentFrame = 0;
   }
 
   AnimationPlayer.prototype.play = function() {
@@ -16,6 +17,12 @@ window.licker = window.licker || {};
         curve.draw();
       }
     }
+
+    this.currentFrame = frame;
+  };
+
+  AnimationPlayer.prototype.redraw = function() {
+    this.drawFrame(this.currentFrame);
   };
 
   // AnimationPlayer.prototype.drawNextFrame = function() {

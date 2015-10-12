@@ -17,6 +17,7 @@ window.licker = window.licker || {};
         animationPlayer.maxFreq = val;
         $maxFreqSlidebar.val(val);
         $maxFreqNumber.val(val);
+        animationPlayer.redraw();
       });
 
       var $maxFreqSlidebar = $('.controller-max-freq__slidebar input');
