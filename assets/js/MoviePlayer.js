@@ -48,7 +48,7 @@ window.licker = window.licker || {};
 
   MoviePlayer.prototype.pause = function() {
     this.isPause = true;
-  }
+  };
 
   ns.MoviePlayer = MoviePlayer;
 }(window.licker));
