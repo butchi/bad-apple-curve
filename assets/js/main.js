@@ -39,6 +39,8 @@ window.licker = window.licker || {};
       animationPlayer = new ns.AnimationPlayer();
       moviePlayer = new ns.MoviePlayer(animationPlayer, audioPlayer);
 
+      $maxFreqSlidebar.trigger('change');
+
       moviePlayer.play();
     });
 

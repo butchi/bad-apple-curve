@@ -22,7 +22,7 @@ window.licker = window.licker || {};
 
     this.vertexArr = [];
     var t;
-    for(t = 0; t < 2 * Math.PI; t += Math.PI/128) {
+    for(t = 0; t < 2 * Math.PI; t += Math.PI/256) {
       this.vertexArr.push([this.funcX(t), this.funcY(t)]);
     }
   }
