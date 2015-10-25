@@ -1,6 +1,8 @@
 window.licker = window.licker || {};
 (function(ns) {
   function Curve(components, maxFreqOpt) {
+    this.components = components;
+
     // components: 級数展開の係数の配列
     this.func = function(axis) {
       // axis:  x: 0, y: 1
@@ -32,6 +34,38 @@ window.licker = window.licker || {};
     curve.setAttribute('points', this.vertexArr);
     ns.$canvas.append(curve);
   };
+
+  Curve.prototype.toExpression = function() {
+    var strPair = [];
+    this.components.forEach(function(component, axisIndex) {
+      var len = component.length;
+
+      var str = component[0];
+      var i;
+      for(i = 1; i < len; i++) {
+        var a = component[i][0];
+        var aSgn = Math.sign(a);
+        var aAbs = Math.abs(a);
+
+        var q = component[i][1];
+        var qSgn = Math.sign(q);
+        var qAbs = Math.abs(q);
+
+        var isExist = (aSgn !== 0);
+
+        if(isExist) {
+          str += ' ' + (aSgn === 1 ? '+' : '-') + ' ' + (a === 1 ? '' : a) + 'sin(' + (i === 1 ? '' : i) + 't' + ((qAbs === 0) ? '' : ' ' + (qSgn === 1 ? '+' : '-') + ' ' + qAbs + ')');
+        }
+      }
+
+      strPair[axisIndex] = str;
+    });
+
+    return {
+      x: strPair[0],
+      y: strPair[1]
+    };
+  }
 
   ns.Curve = Curve;
 }(window.licker));

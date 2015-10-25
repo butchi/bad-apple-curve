@@ -2,6 +2,7 @@ window.licker = window.licker || {};
 (function(ns) {
   function AnimationPlayer() {
     this.currentFrame = 0;
+    this.curveArr = [];
   }
 
   AnimationPlayer.prototype.play = function() {
@@ -10,10 +11,12 @@ window.licker = window.licker || {};
   AnimationPlayer.prototype.drawFrame = function(frame) {
     var curveArr = ns.movieData[frame];
     var c;
+    this.curveArr = [];
     if(curveArr) {
       ns.$canvas.children().remove();
       for(c = 0; c < curveArr.length; c++) {
         var curve = new ns.Curve(curveArr[c], this.maxFreq);
+        this.curveArr.push(curve);
         curve.draw();
       }
     }
