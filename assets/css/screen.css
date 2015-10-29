@@ -41,3 +41,21 @@ body {
 .info--pause .block-info a {
   color: #999;
 }
+
+.list-share {
+  margin-top: 10px;
+  padding: 0;
+
+  list-style: none;
+
+  font-size: 0;
+}
+
+.list-share .item {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.list-share .item + .item {
+  margin-left: 10px;
+}
