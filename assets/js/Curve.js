@@ -77,7 +77,7 @@ window.licker = window.licker || {};
       x: strPair[0],
       y: strPair[1]
     };
-  }
+  };
 
   ns.Curve = Curve;
 }(window.licker));

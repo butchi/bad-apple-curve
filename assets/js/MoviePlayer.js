@@ -91,7 +91,7 @@ window.licker = window.licker || {};
     }
 
     _self.$info.show();
-  }
+  };
 
   ns.MoviePlayer = MoviePlayer;
 }(window.licker));
