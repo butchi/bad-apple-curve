@@ -18,6 +18,9 @@ window.licker = window.licker || {};
         $maxFreqSlidebar.val(val);
         $maxFreqNumber.val(val);
         animationPlayer.redraw();
+        if((moviePlayer.getFrame() !== 0) && moviePlayer.isPause) {
+          moviePlayer.showInfo();
+        }
       });
 
       var $maxFreqSlidebar = $('.controller-max-freq__slidebar input');
@@ -38,6 +41,10 @@ window.licker = window.licker || {};
       audioPlayer = new ns.AudioPlayer($audio);
       animationPlayer = new ns.AnimationPlayer();
       moviePlayer = new ns.MoviePlayer(animationPlayer, audioPlayer);
+
+      ns.moviePlayer = moviePlayer;
+      ns.animationPlayer = animationPlayer;
+      ns.audioPlayer = audioPlayer;
 
       $maxFreqSlidebar.trigger('change');
 
