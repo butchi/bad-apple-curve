@@ -18,21 +18,21 @@ window.licker = window.licker || {};
     });
 
     audioPlayer.$elm.on('play', function() {
-      console.log('play');
+      // console.log('play');
       _self.play();
 
       _self.$info.hide();
     });
 
     audioPlayer.$elm.on('pause', function() {
-      console.log('pause');
+      // console.log('pause');
       _self.pause();
 
       _self.showInfo();
     });
 
     audioPlayer.$elm.on('seeking', function() {
-      console.log('seeking');
+      // console.log('seeking');
 
       _self.animationPlayer.drawFrame(_self.getFrame());
       _self.showInfo();
