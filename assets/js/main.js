@@ -41,7 +41,7 @@ window.licker = window.licker || {};
 
       $maxFreqSlidebar.trigger('change');
 
-      $('[class^="controller-quality__button--"').on('click', function() {
+      $('[class^="controller-quality__button--"]').on('click', function() {
         var $this = $(this);
         var targetClassLi = {
           lq: 'controller-quality__button--lq',
