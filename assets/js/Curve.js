@@ -37,6 +37,14 @@ window.licker = window.licker || {};
   };
 
   Curve.prototype.toExpression = function() {
+    Math.sign = Math.sign || function(x) {
+      x = +x; // convert to a number
+      if (x === 0 || isNaN(x)) {
+        return x;
+      }
+      return x > 0 ? 1 : -1;
+    };
+
     var strPair = [];
     var _self = this;
     this.components.forEach(function(component, axisIndex) {
