@@ -16,6 +16,10 @@ body {
   stroke-width: 1px;
 }
 
+.audio {
+  width: 500px;
+}
+
 .info--pause {
   display: none; /* default */
   position: absolute;
