@@ -4,6 +4,10 @@ body {
   color: white;
 }
 
+a {
+  color: #600;
+}
+
 .title {
   color: #000;
   font-family: "Roboto", sans-serif;
@@ -81,4 +85,12 @@ body {
 
 .list-share .item + .item {
   margin-left: 10px;
+}
+
+.link-original-movie {
+  font-size: 14px;
+}
+
+.link-author-home {
+  font-size: 14px;
 }
