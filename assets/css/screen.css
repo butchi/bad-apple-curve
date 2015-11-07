@@ -118,10 +118,12 @@ a {
 }
 
 #mask--back {
+  -webkit-animation: move-right 2s linear infinite;
   animation: move-right 2s linear infinite;
 }
 
 #mask--front {
+  -webkit-animation: move-left 2s linear infinite;
   animation: move-left 2s linear infinite;
 }
 
@@ -129,6 +131,7 @@ a {
   -webkit-clip-path: url(#mask--back);
   clip-path: url(#mask--back);
 
+  -webkit-animation: move-left 2s linear infinite;
   animation: move-left 2s linear infinite;
 }
 
@@ -136,6 +139,7 @@ a {
   -webkit-clip-path: url(#mask--front);
   clip-path: url(#mask--front);
 
+  -webkit-animation: move-right 2s linear infinite;
   animation: move-right 2s linear infinite;
 }
 
@@ -144,12 +148,59 @@ a {
   stroke-width: 2px;
 }
 
+#text-loading {
+  -webkit-animation: blink 0.3s step-end infinite;
+  animation: blink 0.3s step-end infinite;
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes move-left {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100px, 0);
+  }
+}
+
 @keyframes move-left {
   0% {
     transform: translate(0, 0);
   }
   100% {
     transform: translate(-100px, 0);
+  }
+}
+
+@-webkit-keyframes move-right {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100px, 0);
   }
 }
 
