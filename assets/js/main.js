@@ -34,18 +34,6 @@ window.licker = window.licker || {};
         $(this).trigger('updatevalue');
       });
 
-      $('.controller-compare').on('change', function() {
-        var $movie = $('.original-movie');
-        if($(this).is(':checked')) {
-          $movie.show();
-          if(moviePlayer.ytPlayer) {
-            moviePlayer.ytPlayer.seekTo(moviePlayer.getCurrentTime(), true);
-          }
-        } else {
-          $movie.hide();
-        }
-      });
-
       var $canvas = $('.svg-canvas .svg-canvas__main');
       ns.$canvas = $canvas; // TODO: do not use global variable
       var $audio = $('.audio--bad-apple');
@@ -91,6 +79,32 @@ window.licker = window.licker || {};
         $.getJSON('assets/data/fourier_arr_' + ns.quality + '.json', function(data) {
           ns.movieData = data;
         });
+      });
+
+      $('.controller-compare').on('change', function() {
+        var state = {
+          NORMAL:  'normal',
+          COMPARE: 'compare',
+          OVERLAY: 'overlay',
+        }
+
+        var $movieArr = $('.array-movie');
+
+        if(false) {
+        } else if($(this).val() === state.NORMAL) {
+          $movieArr.attr('data-mode', state.NORMAL);
+        } else if($(this).val() === state.COMPARE) {
+          $movieArr.attr('data-mode', state.COMPARE);
+        } else if($(this).val() === state.OVERLAY) {
+          $movieArr.attr('data-mode', state.OVERLAY);
+        } else {
+        }
+
+        if($(this).val() === state.COMPARE || $(this).val() === state.OVERLAY) {
+          if(moviePlayer.ytPlayer) {
+            moviePlayer.ytPlayer.seekTo(moviePlayer.getCurrentTime(), true);
+          }
+        }
       });
 
       moviePlayer.play();

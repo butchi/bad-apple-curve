@@ -29,8 +29,8 @@
 
     <p class="link-get-source"><a href="https://github.com/butchi/bad-apple-curve/tree/master/_src" target="_blank"><img src="assets/img/icon-mathematica.png" alt="get source!!" width="69" height="69"></a></p>
 
-    <div class="array-movie">
-      <div class="area-movie">
+    <div class="array-movie" data-mode="normal">
+      <div class="area-movie item-movie">
         <svg class="svg-canvas" width="500" height="380" xmlns="http://www.w3.org/2000/svg">
           <desc>Bad Apple Curve!!</desc>
           <g class="svg-canvas__main"></g>
@@ -41,7 +41,7 @@
         </aside>
       </div>
 
-      <div class="original-movie">
+      <div class="original-movie item-movie">
         <div id="original_movie"></div>
       </div>
     </div>
@@ -65,7 +65,9 @@
       <button class="controller-quality__button--hq">最高画質</button>
     </div>
     <div>
-      <label><input type="checkbox" class="controller-compare">オリジナルと比較</label>
+      <label><input type="radio" name="compare" value="normal" checked class="controller-compare">数式曲線</label>
+      <label><input type="radio" name="compare" value="compare" class="controller-compare">オリジナルと比較</label>
+      <label><input type="radio" name="compare" value="overlay" class="controller-compare">オーバーレイ</label>
     </div>
     <ul class="list-share">
       <li class="item item--facebook">
