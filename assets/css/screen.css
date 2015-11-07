@@ -5,7 +5,7 @@ body {
 }
 
 a {
-  color: #600;
+  color: #c00;
 }
 
 .title {
@@ -133,6 +133,11 @@ a {
 
 .info--pause .block-info a {
   color: #999;
+}
+
+.group-controller, .link-original-movie, .link-author-home {
+  text-shadow: 1px 1px 0 #000;
+  /*background-color: rgba(0, 0, 0, 0.5);*/
 }
 
 .list-share {

@@ -96,6 +96,7 @@ window.licker = window.licker || {};
         } else if($(this).val() === state.COMPARE) {
           $movieArr.attr('data-mode', state.COMPARE);
         } else if($(this).val() === state.OVERLAY) {
+          $('.controller-color--line [value="red"]').prop('checked', true).trigger('change');
           $movieArr.attr('data-mode', state.OVERLAY);
         } else {
         }
