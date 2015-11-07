@@ -109,6 +109,59 @@ a {
   stroke-width: 1px;
 }
 
+#svg--loading {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 500px;
+  height: 380px;
+}
+
+#mask--back {
+  animation: move-right 2s linear infinite;
+}
+
+#mask--front {
+  animation: move-left 2s linear infinite;
+}
+
+#wave--back {
+  -webkit-clip-path: url(#mask--back);
+  clip-path: url(#mask--back);
+
+  animation: move-left 2s linear infinite;
+}
+
+#wave--front {
+  -webkit-clip-path: url(#mask--front);
+  clip-path: url(#mask--front);
+
+  animation: move-right 2s linear infinite;
+}
+
+#shape {
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+@keyframes move-left {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100px, 0);
+  }
+}
+
+@keyframes move-right {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100px, 0);
+  }
+}
+
 .audio {
   width: 500px;
 }

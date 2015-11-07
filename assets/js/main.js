@@ -6,7 +6,34 @@ window.licker = window.licker || {};
   var animationPlayer;
   var audioPlayer;
 
-  $.getJSON('assets/data/fourier_arr_lq.json', function(data) {
+  var totalBytesFirst = 9249535; // ä½ç”»è³ªJSONã®ãƒã‚¤ãƒˆæ•°
+
+  $.ajax({
+    url: 'assets/data/fourier_arr_lq.json',
+    type: 'GET',
+    success: init,
+    error:function(data){
+      alert('error');
+    },
+    xhr:function(){
+      var xhr = $.ajaxSettings.xhr();
+      xhr.addEventListener("progress", this.progress);
+      return xhr;
+    },
+    progress:function(evt){
+      var ratio = evt.loaded / totalBytesFirst;
+      $('#mask--front, #mask--back').css({
+        translate: '0 ' + (ratio * 100) + 'px',
+      });
+      $('#wave--front, #wave--back').css({
+        translate: '0 ' + (- ratio * 100) + 'px',
+      });
+    }
+  });
+
+  function init(data) {
+      $('#svg--loading').fadeOut(500);
+
     ns.movieData = data;
     ns.currentFrame = 0;
 
@@ -140,7 +167,6 @@ window.licker = window.licker || {};
         }
 
         if($this.is('.controller-color--line')) {
-          // console.log(color);
           $('.svg-canvas .svg-canvas__main').css({
             stroke: color,
           });
@@ -178,15 +204,15 @@ window.licker = window.licker || {};
         height  : '360',
         videoId : 'G3C-VevI36s',
         events  : {
-          // ¥×¥ì¥¤¥ä©`¤ÎœÊ‚ä¤¬¤Ç¤­¤¿¤È¤­¤ËŒgĞĞ¤µ¤ì¤ë¥³©`¥ë¥Ğ¥Ã¥¯évÊı
+          // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æº–å‚™ãŒã§ããŸã¨ãã«å®Ÿè¡Œã•ã‚Œã‚‹ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°
           onReady : onPlayerReady,
           onStateChange: onStateChange
         },
         playerVars: {
-          rel      : 0, // évßB„Ó»­
-          showinfo : 0, // „Ó»­Çéˆó
-          controls : 0, // ¥³¥ó¥È¥í©`¥é©`
-          wmode    : 'transparent' // z-index¤òÓĞ„¿¤Ë¤¹¤ë
+          rel      : 0, // é–¢é€£å‹•ç”»
+          showinfo : 0, // å‹•ç”»æƒ…å ±
+          controls : 0, // ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼
+          wmode    : 'transparent' // z-indexã‚’æœ‰åŠ¹ã«ã™ã‚‹
         }
       });
 
@@ -210,6 +236,6 @@ window.licker = window.licker || {};
 
       ns.moviePlayer.ytPlayer = ytPlayer;
     };
-  });
+  }
 
 }(window.licker));
