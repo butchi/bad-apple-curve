@@ -41,10 +41,27 @@ a {
   font-size: 0;
 }
 
+.array-movie:after {
+  /* clearfix */
+  content: "."; 
+  display: block; 
+  height: 0; 
+  font-size: 0;  
+  clear: both; 
+  visibility: hidden;
+}
+
 .area-movie {
   position: relative;
+  float: left;
   width: 500px;
   height: 380px;
+}
+
+.original-movie {
+  position: relative;
+  float: left;
+  display: none;
 }
 
 .svg-canvas .svg-canvas__main {

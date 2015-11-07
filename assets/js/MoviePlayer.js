@@ -4,6 +4,8 @@ window.licker = window.licker || {};
     this.animationPlayer = animationPlayer;
     this.audioPlayer = audioPlayer;
 
+    this.ytPlayer = null;
+
     this.frameRate = 30;
 
     this.isPause = true;
@@ -20,6 +22,10 @@ window.licker = window.licker || {};
     audioPlayer.$elm.on('play', function() {
       // console.log('play');
       _self.play();
+      if(_self.ytPlayer) {
+        _self.ytPlayer.seekTo(_self.getCurrentTime(), true);
+        _self.ytPlayer.playVideo();
+      }
 
       _self.$info.hide();
     });
@@ -27,6 +33,9 @@ window.licker = window.licker || {};
     audioPlayer.$elm.on('pause', function() {
       // console.log('pause');
       _self.pause();
+      if(_self.ytPlayer) {
+        _self.ytPlayer.pauseVideo();
+      }
 
       _self.showInfo();
     });
@@ -36,11 +45,18 @@ window.licker = window.licker || {};
 
       _self.animationPlayer.drawFrame(_self.getFrame());
       _self.showInfo();
+      if(_self.ytPlayer) {
+        _self.ytPlayer.seekTo(_self.getCurrentTime(), false);
+      }
     });
   }
 
   MoviePlayer.prototype.getFrame = function() {
     return Math.floor(this.audioPlayer.audioElm.currentTime * this.frameRate);
+  };
+
+  MoviePlayer.prototype.getCurrentTime = function() {
+    return this.audioPlayer.audioElm.currentTime;
   };
 
   MoviePlayer.prototype.play = function() {

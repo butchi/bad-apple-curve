@@ -34,6 +34,18 @@ window.licker = window.licker || {};
         $(this).trigger('updatevalue');
       });
 
+      $('.controller-compare').on('change', function() {
+        var $movie = $('.original-movie');
+        if($(this).is(':checked')) {
+          $movie.show();
+          if(moviePlayer.ytPlayer) {
+            moviePlayer.ytPlayer.seekTo(moviePlayer.getCurrentTime(), true);
+          }
+        } else {
+          $movie.hide();
+        }
+      });
+
       var $canvas = $('.svg-canvas .svg-canvas__main');
       ns.$canvas = $canvas; // TODO: do not use global variable
       var $audio = $('.audio--bad-apple');
@@ -83,6 +95,45 @@ window.licker = window.licker || {};
 
       moviePlayer.play();
     });
+
+    window.onYouTubeIframeAPIReady = function() {
+      var ytPlayer = new YT.Player('original_movie', {
+        width   : '480',
+        height  : '360',
+        videoId : 'G3C-VevI36s',
+        events  : {
+          // プレイヤーの準備ができたときに実行されるコールバック関数
+          onReady : onPlayerReady,
+          onStateChange: onStateChange
+        },
+        playerVars: {
+          rel      : 0, // 関連動画
+          showinfo : 0, // 動画情報
+          controls : 0, // コントローラー
+          wmode    : 'transparent' // z-indexを有効にする
+        }
+      });
+
+      function onPlayerReady() {
+        ytPlayer.mute();
+        if(!moviePlayer.isPause) {
+          ytPlayer.playVideo();
+        }
+      }
+
+      function onStateChange(state) {
+          switch (state.data) {
+          case window.YT.PlayerState.PAUSED:
+          case window.YT.PlayerState.ENDED:
+            break;
+
+          case window.YT.PlayerState.PLAYING:
+            break;
+          }
+      }
+
+      ns.moviePlayer.ytPlayer = ytPlayer;
+    };
   });
 
 }(window.licker));
