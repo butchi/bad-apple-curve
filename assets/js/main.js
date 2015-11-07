@@ -107,6 +107,67 @@ window.licker = window.licker || {};
         }
       });
 
+      $('.controller-color input[type="radio"]').on('change', function() {
+        var val = $(this).val();
+        var $parent = $(this).closest('.controller-color');
+
+        $parent.trigger('updatevalue', val);
+      });
+
+      $('.controller-color input[type="color"]').on('change', function() {
+        var val = $(this).val();
+        var $parent = $(this).closest('.controller-color');
+
+        $parent.trigger('updatevalue', val);
+      });
+
+      $('.controller-color').on('updatevalue', function(_evt, val) {
+        var $this = $(this);
+        var color = val;
+        $this.attr('data-color', color);
+
+        if($this.is('.controller-color--bg')) {
+          $('body').css({
+            "background-color": color,
+          });
+        }
+
+        if($this.is('.controller-color--fill')) {
+          $('.svg-canvas .svg-canvas__main').css({
+            fill: color,
+          });
+        }
+
+        if($this.is('.controller-color--line')) {
+          // console.log(color);
+          $('.svg-canvas .svg-canvas__main').css({
+            stroke: color,
+          });
+        }
+      });
+
+      var $thicknessController = $('.controller-thickness');
+      $thicknessController.on('updatevalue', function(evt) {
+        var val = $(this).attr('data-value');
+        $('.svg-canvas .svg-canvas__main').css({
+          "stroke-width": val,
+        });
+        $thicknessNumber.val(val);
+      });
+
+      var $thicknessSlidebar = $('.controller-thickness__slidebar input');
+      var $thicknessNumber = $('.controller-thickness__number input');
+      $thicknessSlidebar.on('input change', function() {
+        $thicknessController.attr('data-value', $(this).val());
+        $(this).trigger('updatevalue');
+      });
+      $thicknessNumber.on('input change', function() {
+        $thicknessController.attr('data-value', $(this).val());
+        $(this).trigger('updatevalue');
+      });
+
+      $thicknessSlidebar.trigger('change');
+
       moviePlayer.play();
     });
 
