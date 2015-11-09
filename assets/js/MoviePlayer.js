@@ -20,9 +20,10 @@ window.licker = window.licker || {};
     audioPlayer.$elm.on('play', function() {
       // console.log('play');
       _self.play();
-      if(ns.ytPlayer) {
+      try {
         ns.ytPlayer.seekTo(_self.getCurrentTime(), true);
         ns.ytPlayer.playVideo();
+      } catch(_e) {
       }
 
       _self.$info.hide();
@@ -31,8 +32,9 @@ window.licker = window.licker || {};
     audioPlayer.$elm.on('pause', function() {
       // console.log('pause');
       _self.pause();
-      if(ns.ytPlayer) {
+      try {
         ns.ytPlayer.pauseVideo();
+      } catch(_e) {
       }
 
       _self.showInfo();
@@ -43,8 +45,9 @@ window.licker = window.licker || {};
 
       _self.animationPlayer.drawFrame(_self.getFrame());
       _self.showInfo();
-      if(ns.ytPlayer) {
+      try {
         ns.ytPlayer.seekTo(_self.getCurrentTime(), false);
+      } catch(_e) {
       }
     });
   }

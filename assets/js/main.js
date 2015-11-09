@@ -129,8 +129,9 @@ window.licker = window.licker || {};
         }
 
         if($(this).val() === state.COMPARE || $(this).val() === state.OVERLAY) {
-          if(ns.ytPlayer) {
+          try {
             ns.ytPlayer.seekTo(moviePlayer.getCurrentTime(), true);
+          } catch(_e) {
           }
         }
       });
