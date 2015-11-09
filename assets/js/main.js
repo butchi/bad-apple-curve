@@ -54,11 +54,11 @@ window.licker = window.licker || {};
       var $maxFreqNumber = $('.controller-max-freq__number input');
       $maxFreqSlidebar.on('input change', function() {
         $maxFreqController.attr('data-value', $(this).val());
-        $(this).trigger('updatevalue');
+        $maxFreqController.trigger('updatevalue');
       });
       $maxFreqNumber.on('input change', function() {
         $maxFreqController.attr('data-value', $(this).val());
-        $(this).trigger('updatevalue');
+        $maxFreqController.trigger('updatevalue');
       });
 
       var $canvas = $('.svg-canvas .svg-canvas__main');
@@ -179,6 +179,7 @@ window.licker = window.licker || {};
         $('.svg-canvas .svg-canvas__main').css({
           "stroke-width": val,
         });
+        $thicknessSlidebar.val(val);
         $thicknessNumber.val(val);
       });
 
@@ -186,11 +187,11 @@ window.licker = window.licker || {};
       var $thicknessNumber = $('.controller-thickness__number input');
       $thicknessSlidebar.on('input change', function() {
         $thicknessController.attr('data-value', $(this).val());
-        $(this).trigger('updatevalue');
+        $thicknessController.trigger('updatevalue');
       });
       $thicknessNumber.on('input change', function() {
         $thicknessController.attr('data-value', $(this).val());
-        $(this).trigger('updatevalue');
+        $thicknessController.trigger('updatevalue');
       });
 
       $thicknessSlidebar.trigger('change');
