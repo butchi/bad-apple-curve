@@ -129,8 +129,8 @@ window.licker = window.licker || {};
         }
 
         if($(this).val() === state.COMPARE || $(this).val() === state.OVERLAY) {
-          if(moviePlayer.ytPlayer) {
-            moviePlayer.ytPlayer.seekTo(moviePlayer.getCurrentTime(), true);
+          if(ns.ytPlayer) {
+            ns.ytPlayer.seekTo(moviePlayer.getCurrentTime(), true);
           }
         }
       });
@@ -197,45 +197,44 @@ window.licker = window.licker || {};
 
       moviePlayer.play();
     });
-
-    window.onYouTubeIframeAPIReady = function() {
-      var ytPlayer = new YT.Player('original_movie', {
-        width   : '480',
-        height  : '360',
-        videoId : 'G3C-VevI36s',
-        events  : {
-          // プレイヤーの準備ができたときに実行されるコールバック関数
-          onReady : onPlayerReady,
-          onStateChange: onStateChange
-        },
-        playerVars: {
-          rel      : 0, // 関連動画
-          showinfo : 0, // 動画情報
-          controls : 0, // コントローラー
-          wmode    : 'transparent' // z-indexを有効にする
-        }
-      });
-
-      function onPlayerReady() {
-        ytPlayer.mute();
-        if(!moviePlayer.isPause) {
-          ytPlayer.playVideo();
-        }
-      }
-
-      function onStateChange(state) {
-          switch (state.data) {
-          case window.YT.PlayerState.PAUSED:
-          case window.YT.PlayerState.ENDED:
-            break;
-
-          case window.YT.PlayerState.PLAYING:
-            break;
-          }
-      }
-
-      ns.moviePlayer.ytPlayer = ytPlayer;
-    };
   }
 
+  window.onYouTubeIframeAPIReady = function() {
+    var ytPlayer = new YT.Player('original_movie', {
+      width   : '480',
+      height  : '360',
+      videoId : 'G3C-VevI36s',
+      events  : {
+        // プレイヤーの準備ができたときに実行されるコールバック関数
+        onReady : onPlayerReady,
+        onStateChange: onStateChange
+      },
+      playerVars: {
+        rel      : 0, // 関連動画
+        showinfo : 0, // 動画情報
+        controls : 0, // コントローラー
+        wmode    : 'transparent' // z-indexを有効にする
+      }
+    });
+
+    function onPlayerReady() {
+      ytPlayer.mute();
+      if(moviePlayer && !moviePlayer.isPause) {
+        ytPlayer.playVideo();
+      }
+    }
+
+    function onStateChange(state) {
+        switch (state.data) {
+        case window.YT.PlayerState.PAUSED:
+        case window.YT.PlayerState.ENDED:
+          break;
+
+        case window.YT.PlayerState.PLAYING:
+          break;
+        }
+    }
+
+    ns.ytPlayer = ytPlayer;
+  };
 }(window.licker));
