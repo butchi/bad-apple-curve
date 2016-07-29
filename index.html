@@ -217,63 +217,139 @@
 
     <div class="group-controller">
       <div class="controller-max-freq">
-        <span class="controller-max-freq__slidebar">
-          <label>
-            <span>次数（周波数上限）: </span>
-            <input type="range" max="100", min="1" step="1" value="15">
-          </label>
-        </span>
-        <span class="controller-max-freq__number">
-          <input type="number" max="100", min="1" step="1" value="15">
-        </span>
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--2-col">
+            <div class="controller-max-freq__slidebar">
+              <input class="mdl-slider mdl-js-slider" type="range" max="100", min="1" step="1" value="15">
+            </div>
+          </div>
+          <div class="mdl-cell mdl-cell--2-col">
+            <div class="controller-max-freq__number mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="controller-max-freq__input">
+              <label class="mdl-textfield__label" for="controller-max-freq__input">次数（周波数上限）</label>
+              <span class="mdl-textfield__error">数値を入力してください</span>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div class="controller-quality">
-        <button class="controller-quality__button--lq" disabled>低画質</button>
-        <button class="controller-quality__button--mq">高画質</button>
-        <button class="controller-quality__button--hq">最高画質</button>
+        <button class="controller-quality__button--lq mdl-button mdl-js-button mdl-button--raised" disabled>低画質</button>
+        <button class="controller-quality__button--mq mdl-button mdl-js-button mdl-button--raised">高画質</button>
+        <button class="controller-quality__button--hq mdl-button mdl-js-button mdl-button--raised">最高画質</button>
       </div>
       <div>
-        <label><input type="radio" name="compare" value="normal" checked class="controller-compare">数式曲線</label>
-        <label><input type="radio" name="compare" value="compare" class="controller-compare">オリジナルと比較</label>
-        <label><input type="radio" name="compare" value="overlay" class="controller-compare">オーバーレイ</label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="compare" value="normal" checked class="controller-compare">
+          <span class="mdl-radio__label">数式曲線</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="compare" value="compare" class="controller-compare">
+          <span class="mdl-radio__label">オリジナルと比較</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="compare" value="overlay" class="controller-compare">
+          <span class="mdl-radio__label">オーバーレイ</span>
+        </label>
       </div>
       <div class="controller-color controller-color--bg" data-color="transparent">
         背景:
-        <label><input type="radio" name="bg" value="transparent">透過</label>
-        <label><input type="radio" name="bg" value="red">赤</label>
-        <label><input type="radio" name="bg" value="black">黒</label>
-        <label><input type="radio" name="bg" value="white">白</label>
-        <label><input type="radio" name="bg" value="lime">緑</label>
-        <label><input type="color">カスタム</label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="bg" value="transparent">
+          <span class="mdl-radio__label">透過</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="bg" value="red">
+          <span class="mdl-radio__label">赤</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="bg" value="black">
+          <span class="mdl-radio__label">黒</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="bg" value="white">
+          <span class="mdl-radio__label">白</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="bg" value="lime">
+          <span class="mdl-radio__label">緑</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="color">
+          <span class="mdl-radio__label">カスタム</span>
+        </label>
       </div>
       <div class="controller-color controller-color--fill" data-color="transparent">
         塗り:
-        <label><input type="radio" name="fill" value="transparent">透過</label>
-        <label><input type="radio" name="fill" value="red">赤</label>
-        <label><input type="radio" name="fill" value="black">黒</label>
-        <label><input type="radio" name="fill" value="white">白</label>
-        <label><input type="radio" name="fill" value="lime">緑</label>
-        <label><input type="color">カスタム</label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="fill" value="transparent">
+          <span class="mdl-radio__label">透過</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="fill" value="red">
+          <span class="mdl-radio__label">赤</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="fill" value="black">
+          <span class="mdl-radio__label">黒</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="fill" value="white">
+          <span class="mdl-radio__label">白</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="fill" value="lime">
+          <span class="mdl-radio__label">緑</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="color">
+          <span class="mdl-radio__label">カスタム</span>
+        </label>
       </div>
       <div class="controller-color controller-color--line" data-color="white">
         輪郭:
-        <label><input type="radio" name="line" value="transparent">透過</label>
-        <label><input type="radio" name="line" value="red">赤</label>
-        <label><input type="radio" name="line" value="black">黒</label>
-        <label><input type="radio" name="line" value="white">白</label>
-        <label><input type="radio" name="line" value="lime">緑</label>
-        <label><input type="color">カスタム</label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="line" value="transparent">
+          <span class="mdl-radio__label">透過</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="line" value="red">
+          <span class="mdl-radio__label">赤</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="line" value="black">
+          <span class="mdl-radio__label">黒</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="line" value="white">
+          <span class="mdl-radio__label">白</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="radio" name="line" value="lime">
+          <span class="mdl-radio__label">緑</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+          <input class="mdl-radio__button" type="color">
+          <span class="mdl-radio__label">カスタム</span>
+        </label>
       </div>
       <div class="controller-thickness">
-        <span class="controller-thickness__slidebar">
-          <label>
-            <span>太さ: </span>
-            <input type="range" max="100", min="0.1" step="0.1" value="1">
-          </label>
-        </span>
-        <span class="controller-thickness__number">
-          <input type="number" max="100", min="0.1" step="0.1" value="1">
-        </span>
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--2-col">
+            <div class="controller-thickness__slidebar">
+              <input class="mdl-slider mdl-js-slider" type="range" max="100", min="0.1" step="0.1" value="1">
+            </div>
+            <div class="controller-thickness__number">
+            </div>
+          </div>
+          <div class="mdl-cell mdl-cell--2-col">
+            <div class="controller-thickness__number mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="controller-max-freq__input">
+              <label class="mdl-textfield__label" for="controller-max-freq__input">太さ</label>
+              <span class="mdl-textfield__error">数値を入力してください</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <ul class="list-share">
